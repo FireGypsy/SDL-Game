@@ -23,7 +23,7 @@ Engine::Engine() :
   clock( Clock::getInstance() ),
   renderer( rc->getRenderer() ),
   world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
-  //gameMap(),
+  gameMap(),
   viewport( Viewport::getInstance() ),
   star(new Sprite("YellowStar")),
   spinningStar(new MultiSprite("SpinningStar")),
@@ -41,8 +41,8 @@ void Engine::draw() const {
   SDL_SetRenderDrawColor(renderer, 0x0, 0x0, 0x0, 0xFF);
   SDL_RenderClear(renderer);
   
-  world.draw();
-  //gameMap.draw();
+  //world.draw();
+  gameMap.draw();
 
   star->draw();
   spinningStar->draw();
@@ -56,8 +56,8 @@ void Engine::update(Uint32 ticks) {
   star->update(ticks);
   spinningStar->update(ticks);
   //cursor->update(ticks);
-  world.update();
-  //gameMap.update();
+  //world.update();
+  gameMap.update();
   viewport.update(); // always update viewport last
 }
 

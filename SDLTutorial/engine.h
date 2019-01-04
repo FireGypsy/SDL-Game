@@ -21,7 +21,7 @@ private:
 
   SDL_Renderer * const renderer;
   World world;
-  //GameMap gameMap;
+  GameMap gameMap;
   Viewport& viewport;
 
   Drawable* star;
