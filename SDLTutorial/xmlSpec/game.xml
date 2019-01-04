@@ -1,0 +1,63 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<title>Test title</title>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<maxFrames>300</maxFrames>
+<username>ajm4</username>
+
+<view>
+  <width>854</width>
+  <height>480</height>
+  <loc x="30" y="30"/>
+</view>
+
+<world>
+  <width>1280</width>
+  <height>960</height>
+</world>
+
+<back>
+  <file>assets\bigstarrysky.png</file>
+  <factor>1</factor>
+  <transparency>false</transparency>
+</back>
+
+<map>
+  <file>assets\tiles.png</file>
+  <transparency>false</transparency>
+</map>
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>24</size>
+  <red>255</red>
+  <green>255</green>
+  <blue>0</blue>
+  <alpha>0</alpha>
+</font>
+
+<SpinningStar>
+  <file>assets/stars.png</file>
+  <startLoc x="50" y="140"/>
+  <frames>4</frames>
+  <frameInterval>50</frameInterval>
+  <speedX>200</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+</SpinningStar>
+
+<YellowStar>
+  <file>assets/yellowstar32.png</file>
+  <startLoc x="227" y="240"/>
+  <speedX>300</speedX>
+  <speedY>300</speedY>
+  <transparency>false</transparency>
+</YellowStar>
+
+</GameData>

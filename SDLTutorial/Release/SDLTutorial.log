@@ -1,0 +1,44 @@
+﻿  clock.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  engine.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\sprite.h(22): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\users\aj\code\sdltutorial\sdltutorial\sprite.h(23): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\users\aj\code\sdltutorial\sdltutorial\multisprite.h(20): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\users\aj\code\sdltutorial\sdltutorial\multisprite.h(23): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  frameGenerator.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  gameData.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  gameMap.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  image.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\ioMod.h(4): fatal error C1083: Cannot open include file: 'SDL_ttf.h': No such file or directory
+  imageFactory.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\ioMod.h(4): fatal error C1083: Cannot open include file: 'SDL_ttf.h': No such file or directory
+  ioMod.cpp
+ioMod.cpp(1): fatal error C1083: Cannot open include file: 'SDL_image.h': No such file or directory
+  LTexture.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\LTexture.h(5): fatal error C1083: Cannot open include file: 'SDL_image.h': No such file or directory
+  main.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\ioMod.h(4): fatal error C1083: Cannot open include file: 'SDL_ttf.h': No such file or directory
+  multisprite.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\multisprite.h(20): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\users\aj\code\sdltutorial\sdltutorial\multisprite.h(23): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  parseXML.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  renderContext.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  sprite.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\sprite.h(22): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\users\aj\code\sdltutorial\sdltutorial\sprite.h(23): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  spriteSheet.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\spriteSheet.h(6): fatal error C1083: Cannot open include file: 'SDL_image.h': No such file or directory
+  tile.cpp
+  vector2f.cpp
+  viewport.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
+  world.cpp
+f:\users\aj\code\sdltutorial\sdltutorial\parseXML.h(9): fatal error C1083: Cannot open include file: 'expat.h': No such file or directory
