@@ -21,12 +21,12 @@ private:
 
   SDL_Renderer * const renderer;
   World world;
-  GameMap gameMap;
+  //GameMap gameMap;
   Viewport& viewport;
 
   Drawable* star;
   Drawable* spinningStar;
-  Drawable* cursor;
+  //Drawable* cursor;
   int currentSprite;
 
   bool makeVideo;

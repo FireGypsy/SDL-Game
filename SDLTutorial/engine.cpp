@@ -23,11 +23,11 @@ Engine::Engine() :
   clock( Clock::getInstance() ),
   renderer( rc->getRenderer() ),
   world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
-  gameMap(),
+  //gameMap(),
   viewport( Viewport::getInstance() ),
   star(new Sprite("YellowStar")),
   spinningStar(new MultiSprite("SpinningStar")),
-  cursor(new Cursor("Yellowstar")),
+  //cursor(new Cursor("Yellowstar")),
   currentSprite(0),
   makeVideo( false )
 {
@@ -41,23 +41,23 @@ void Engine::draw() const {
   SDL_SetRenderDrawColor(renderer, 0x0, 0x0, 0x0, 0xFF);
   SDL_RenderClear(renderer);
   
-  //world.draw();
-  gameMap.draw();
+  world.draw();
+  //gameMap.draw();
 
-  //star->draw();
-  //spinningStar->draw();
-  cursor->draw();
+  star->draw();
+  spinningStar->draw();
+  //cursor->draw();
 
   viewport.draw();
   SDL_RenderPresent(renderer);
 }
 
 void Engine::update(Uint32 ticks) {
-  //star->update(ticks);
-  //spinningStar->update(ticks);
-  cursor->update(ticks);
-  //world.update();
-  gameMap.update();
+  star->update(ticks);
+  spinningStar->update(ticks);
+  //cursor->update(ticks);
+  world.update();
+  //gameMap.update();
   viewport.update(); // always update viewport last
 }
 
