@@ -42,6 +42,14 @@
   <alpha>0</alpha>
 </font>
 
+<Cursor>
+  <file>assets/yellowstar32.png</file>
+  <startLoc x="227" y="240"/>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <transparency>false</transparency>
+</Cursor>
+
 <SpinningStar>
   <file>assets/stars.png</file>
   <startLoc x="50" y="140"/>

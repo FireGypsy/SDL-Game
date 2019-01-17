@@ -21,6 +21,14 @@ public:
   int getScaledWidth()  const { return getScale()*image->getWidth(); }
   int getScaledHeight() const { return getScale()*image->getHeight(); }
 
+  void handleEvent(SDL_Event&);
+
+  void right();
+  void left();
+  void up();
+  void down();
+  void stop();
+
 private:
   const Image * image;
 

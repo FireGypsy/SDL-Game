@@ -12,8 +12,8 @@
 #include "frameGenerator.h"
 
 Engine::~Engine() { 
-  delete star;
-  delete spinningStar;
+  //delete star;
+  //delete spinningStar;
   std::cout << "Terminating program" << std::endl;
 }
 
@@ -22,17 +22,17 @@ Engine::Engine() :
   io( IoMod::getInstance() ),
   clock( Clock::getInstance() ),
   renderer( rc->getRenderer() ),
-  world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
+  //world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   gameMap(),
   viewport( Viewport::getInstance() ),
-  star(new Sprite("YellowStar")),
-  spinningStar(new MultiSprite("SpinningStar")),
-  //cursor(new Cursor("Yellowstar")),
+  //star(new Sprite("YellowStar")),
+  //spinningStar(new MultiSprite("SpinningStar")),
+  cursor(new Cursor("Cursor")),
   currentSprite(0),
   makeVideo( false )
 {
   
-  Viewport::getInstance().setObjectToTrack(star);
+  Viewport::getInstance().setObjectToTrack(cursor);
   std::cout << "Loading complete" << std::endl;
 }
 
@@ -44,18 +44,18 @@ void Engine::draw() const {
   //world.draw();
   gameMap.draw();
 
-  star->draw();
-  spinningStar->draw();
-  //cursor->draw();
+  //star->draw();
+  //spinningStar->draw();
+  cursor->draw();
 
   viewport.draw();
   SDL_RenderPresent(renderer);
 }
 
 void Engine::update(Uint32 ticks) {
-  star->update(ticks);
-  spinningStar->update(ticks);
-  //cursor->update(ticks);
+  //star->update(ticks);
+  //spinningStar->update(ticks);
+  cursor->update(ticks);
   //world.update();
   gameMap.update();
   viewport.update(); // always update viewport last
@@ -65,10 +65,10 @@ void Engine::switchSprite(){
   ++currentSprite;
   currentSprite = currentSprite % 2;
   if ( currentSprite ) {
-    Viewport::getInstance().setObjectToTrack(spinningStar);
+    //Viewport::getInstance().setObjectToTrack(spinningStar);
   }
   else {
-    Viewport::getInstance().setObjectToTrack(star);
+    //Viewport::getInstance().setObjectToTrack(star);
   }
 }
 
@@ -82,24 +82,13 @@ void Engine::play() {
   while ( !done ) {
     // The next loop polls for events, guarding against key bounce:
     while ( SDL_PollEvent(&event) ) {
+      cursor->handleEvent(event);
       keystate = SDL_GetKeyboardState(NULL);
       if (event.type ==  SDL_QUIT) { done = true; break; }
       if(event.type == SDL_KEYDOWN) {
         if (keystate[SDL_SCANCODE_ESCAPE] || keystate[SDL_SCANCODE_Q]) {
           done = true;
           break;
-        }
-        if (keystate[SDL_SCANCODE_W]) {
-          //cursor->up();
-        }
-        if (keystate[SDL_SCANCODE_S]) {
-          //cursor->down();
-        }
-        if (keystate[SDL_SCANCODE_A]) {
-          //cursor->left();
-        }
-        if (keystate[SDL_SCANCODE_D]) {
-          //cursor->right();
         }
         if ( keystate[SDL_SCANCODE_P] ) {
           if ( clock.isPaused() ) clock.unpause();

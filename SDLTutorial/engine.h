@@ -7,6 +7,8 @@
 #include "gameMap.h"
 #include "viewport.h"
 
+#include "cursor.h"
+
 class Engine {
 public:
   Engine ();
@@ -20,13 +22,13 @@ private:
   Clock& clock;
 
   SDL_Renderer * const renderer;
-  World world;
+  //World world;
   GameMap gameMap;
   Viewport& viewport;
 
-  Drawable* star;
-  Drawable* spinningStar;
-  //Drawable* cursor;
+  //Drawable* star;
+  //Drawable* spinningStar;
+  Cursor* cursor;
   int currentSprite;
 
   bool makeVideo;

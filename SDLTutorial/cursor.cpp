@@ -77,3 +77,55 @@ void Cursor::update(Uint32 ticks) {
     setVelocityX(-std::abs(getVelocityX()));
   }
 }
+
+void Cursor::handleEvent(SDL_Event& event) {
+  if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
+    if (event.key.keysym.sym == SDLK_w) {
+      up();
+    }
+    if (event.key.keysym.sym == SDLK_s) {
+      down();
+    }
+    if (event.key.keysym.sym == SDLK_a) {
+      left();
+    }
+    if (event.key.keysym.sym == SDLK_d) {
+      right();
+    }
+  }
+  else if (event.type == SDL_KEYUP && event.key.repeat == 0) {
+    switch (event.key.keysym.sym)
+    {
+    case SDLK_w:
+      down();
+      break;
+    case SDLK_s:
+      up();
+      break;
+    case SDLK_a:
+      right();
+      break;
+    case SDLK_d:
+      left();
+      break;
+    }
+  }
+}
+
+void Cursor::right() {
+  setVelocityX(getVelocityX() + 300.0);
+}
+void Cursor::left() {
+  setVelocityX(getVelocityX() - 300.0);
+}
+void Cursor::up() {
+  setVelocityY(getVelocityY() - 300.0);
+}
+void Cursor::down() {
+  setVelocityY(getVelocityY() + 300.0);
+}
+
+void Cursor::stop() {
+  setVelocityX(0);
+  setVelocityY(0);
+}
