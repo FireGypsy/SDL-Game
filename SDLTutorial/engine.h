@@ -22,8 +22,9 @@ private:
   Clock& clock;
 
   SDL_Renderer * const renderer;
+  GameMap& gameMap;
   //World world;
-  GameMap gameMap;
+  
   Viewport& viewport;
 
   //Drawable* star;

@@ -23,7 +23,7 @@ Engine::Engine() :
   clock( Clock::getInstance() ),
   renderer( rc->getRenderer() ),
   //world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
-  gameMap(),
+  gameMap(GameMap::getInstance() ),
   viewport( Viewport::getInstance() ),
   //star(new Sprite("YellowStar")),
   //spinningStar(new MultiSprite("SpinningStar")),

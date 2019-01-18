@@ -63,6 +63,11 @@ void Cursor::update(Uint32 ticks) {
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
   setPosition(getPosition() + incr);
 
+  //TODO make gameMap a singleton for this
+  //should use the rect instead of location
+  //if(gameMap->canEnter(getX(), getY()))
+  //  std::cout << "can't enter this" << std::endl;
+
   if (getY() < 0) {
     setVelocityY(std::abs(getVelocityY()));
   }

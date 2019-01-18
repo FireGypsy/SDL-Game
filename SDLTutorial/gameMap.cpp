@@ -1,6 +1,11 @@
 #include "gameMap.h"
 #include "imageFactory.h"
 
+GameMap& GameMap::getInstance() {
+  static GameMap instance;
+  return instance;
+}
+
 GameMap::GameMap():
 image(ImageFactory::getInstance()->getImage("map")),
 view(Viewport::getInstance()),
@@ -33,70 +38,70 @@ TILE_HEIGHT(0)
     map >> MAP_WIDTH >> MAP_HEIGHT;
 
     map >> SPRITES_WIDTH >> SPRITES_HEIGHT;
-    map >> TILE_WIDTH >> TILE_HEIGHT;
+map >> TILE_WIDTH >> TILE_HEIGHT;
 
-    //verify all the constants make sense
-    //TODO
+//verify all the constants make sense
+//TODO
 
-    tileset.reserve(TOTAL_TILES);
-    TOTAL_SPRITES = SPRITES_WIDTH * SPRITES_HEIGHT;
-    tileclips.reserve(TOTAL_SPRITES);
+tileset.reserve(TOTAL_TILES);
+TOTAL_SPRITES = SPRITES_WIDTH * SPRITES_HEIGHT;
+tileclips.reserve(TOTAL_SPRITES);
 
-    //Initialize the tiles
-    for (int i = 0; i < TOTAL_TILES; ++i)
-    {
-      //Determines what kind of tile will be made
-      int tileType = -1;
-      
-      //Read tile from map file
-      map >> tileType;
+//Initialize the tiles
+for (int i = 0; i < TOTAL_TILES; ++i)
+{
+  //Determines what kind of tile will be made
+  int tileType = -1;
 
-      //If the was a problem in reading the map
-      if (map.fail())
-      {
-        //Stop loading map
-        printf("Error loading map: Unexpected end of file!\n");
-        break;
-      }
-      
-      //If the number is a valid tile number
-      if ((tileType >= 0) && (tileType < TOTAL_SPRITES))
-      {
-        tileset.push_back(new Tile(x, y, TILE_WIDTH, TILE_HEIGHT, tileType));
-      }
-      //If we don't recognize the tile type
-      else
-      {
-        //Stop loading map
-        printf("Error loading map: Invalid tile type at %d!\n", i);
-        break;
-      }
+  //Read tile from map file
+  map >> tileType;
 
-      //Move to next tile spot
-      x += TILE_WIDTH;
+  //If the was a problem in reading the map
+  if (map.fail())
+  {
+    //Stop loading map
+    printf("Error loading map: Unexpected end of file!\n");
+    break;
+  }
 
-      //If we've gone too far
-      if (x >= MAP_WIDTH)
-      {
-        //Move back
-        x = 0;
+  //If the number is a valid tile number
+  if ((tileType >= 0) && (tileType < TOTAL_SPRITES))
+  {
+    tileset.push_back(new Tile(x, y, TILE_WIDTH, TILE_HEIGHT, tileType));
+  }
+  //If we don't recognize the tile type
+  else
+  {
+    //Stop loading map
+    printf("Error loading map: Invalid tile type at %d!\n", i);
+    break;
+  }
 
-        //Move to the next row
-        y += TILE_HEIGHT;
-      }
-      
-    }
+  //Move to next tile spot
+  x += TILE_WIDTH;
 
-    for (int i = 0; i < SPRITES_HEIGHT; i++) {
-      for (int j = 0; j < SPRITES_WIDTH; j++) {
-        tileclips.push_back(new SDL_Rect);
-        int tileNumber = SPRITES_WIDTH * i + j;
-        tileclips[tileNumber]->x = TILE_WIDTH * j;
-        tileclips[tileNumber]->y = TILE_HEIGHT * i;
-        tileclips[tileNumber]->w = TILE_WIDTH;
-        tileclips[tileNumber]->h = TILE_HEIGHT;
-      }
-    }
+  //If we've gone too far
+  if (x >= MAP_WIDTH)
+  {
+    //Move back
+    x = 0;
+
+    //Move to the next row
+    y += TILE_HEIGHT;
+  }
+
+}
+
+for (int i = 0; i < SPRITES_HEIGHT; i++) {
+  for (int j = 0; j < SPRITES_WIDTH; j++) {
+    tileclips.push_back(new SDL_Rect);
+    int tileNumber = SPRITES_WIDTH * i + j;
+    tileclips[tileNumber]->x = TILE_WIDTH * j;
+    tileclips[tileNumber]->y = TILE_HEIGHT * i;
+    tileclips[tileNumber]->w = TILE_WIDTH;
+    tileclips[tileNumber]->h = TILE_HEIGHT;
+  }
+}
   }
 
   //Close the file
@@ -118,7 +123,7 @@ void GameMap::draw() const {
     if (true) {
       //this tile needs to be rendered
       SDL_Point* center = NULL;
-      image->draw((tileset[i]->getRect().x - view.getX()),(tileset[i]->getRect().y - view.getY()), tileclips[tileset[i]->getType()], 0.0, SDL_FLIP_NONE);
+      image->draw((tileset[i]->getRect().x - view.getX()), (tileset[i]->getRect().y - view.getY()), tileclips[tileset[i]->getType()], 0.0, SDL_FLIP_NONE);
     }
   }
 }
@@ -126,4 +131,15 @@ void GameMap::draw() const {
 void GameMap::update() {
   viewX = view.getX();
   viewY = view.getY();
+}
+
+bool GameMap::canEnter(int x, int y) {
+  //normalize it to the grid
+  x = x / TILE_WIDTH;
+  y = y / TILE_HEIGHT;
+
+  if (tileset[y*(MAP_WIDTH / TILE_WIDTH) + x]->getType() == 0){
+    return true;
+  }
+  return false;
 }

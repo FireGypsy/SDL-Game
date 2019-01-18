@@ -23,15 +23,18 @@ const int TILE_TOPLEFT = 11; //1 -
 class GameMap
 {
 public:
-  GameMap();
+  static GameMap& getInstance();
   ~GameMap();
 
   //draw all of the tiles
   void draw() const;
   //update what gets shown by the moving viewport
   void update();
+  bool canEnter(int, int);
 
 private:
+  GameMap();
+
   std::vector<Tile*> tileset;
   std::vector<SDL_Rect*> tileclips;
   Image* const image;
