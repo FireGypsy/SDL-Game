@@ -44,7 +44,7 @@ map >> TILE_WIDTH >> TILE_HEIGHT;
 //TODO
 
 tileset.reserve(TOTAL_TILES);
-TOTAL_SPRITES = SPRITES_WIDTH * SPRITES_HEIGHT;
+TOTAL_SPRITES = (SPRITES_WIDTH/TILE_WIDTH) * (SPRITES_HEIGHT/TILE_HEIGHT);
 tileclips.reserve(TOTAL_SPRITES);
 
 //Initialize the tiles
@@ -92,10 +92,10 @@ for (int i = 0; i < TOTAL_TILES; ++i)
 
 }
 
-for (int i = 0; i < SPRITES_HEIGHT; i++) {
-  for (int j = 0; j < SPRITES_WIDTH; j++) {
+for (int i = 0; i < (SPRITES_HEIGHT/TILE_HEIGHT); i++) {
+  for (int j = 0; j < (SPRITES_WIDTH/TILE_WIDTH); j++) {
     tileclips.push_back(new SDL_Rect);
-    int tileNumber = SPRITES_WIDTH * i + j;
+    int tileNumber = (SPRITES_WIDTH/TILE_WIDTH) * i + j;
     tileclips[tileNumber]->x = TILE_WIDTH * j;
     tileclips[tileNumber]->y = TILE_HEIGHT * i;
     tileclips[tileNumber]->w = TILE_WIDTH;
@@ -131,6 +131,14 @@ void GameMap::draw() const {
 void GameMap::update() {
   viewX = view.getX();
   viewY = view.getY();
+}
+
+Tile* GameMap::getTileByIndex(int x, int y) {
+  return tileset[(y*(MAP_WIDTH/TILE_WIDTH)+x)];
+}
+
+Tile* GameMap::getTileByCoord(int x, int y) {
+  return getTileByIndex(x / TILE_WIDTH, y / TILE_HEIGHT);
 }
 
 bool GameMap::canEnter(int x, int y) {

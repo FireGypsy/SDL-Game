@@ -6,20 +6,6 @@
 #include "tile.h"
 #include "viewport.h"
 
-//The different tile sprites
-const int TILE_RED = 0; //0 -
-const int TILE_GREEN = 1; //4 -
-const int TILE_BLUE = 2; //8 -
-const int TILE_CENTER = 3; //6 -
-const int TILE_TOP = 4; //2 -
-const int TILE_TOPRIGHT = 5; //3 -
-const int TILE_RIGHT = 6; //7 -
-const int TILE_BOTTOMRIGHT = 7; //11 -
-const int TILE_BOTTOM = 8; //10 -
-const int TILE_BOTTOMLEFT = 9; //9 -
-const int TILE_LEFT = 10; //5 -
-const int TILE_TOPLEFT = 11; //1 -
-
 class GameMap
 {
 public:
@@ -30,11 +16,15 @@ public:
   void draw() const;
   //update what gets shown by the moving viewport
   void update();
+  //returns the tile at int x, int y
+  Tile* getTileByIndex(int x, int y);
+  Tile* getTileByCoord(int x, int y);
   bool canEnter(int, int);
 
 private:
   GameMap();
 
+  //tiles go in left to right order, then row by row
   std::vector<Tile*> tileset;
   std::vector<SDL_Rect*> tileclips;
   Image* const image;
@@ -43,13 +33,15 @@ private:
   float viewX;
   float viewY;
 
-  int TOTAL_TILES;
-  int MAP_WIDTH;
-  int MAP_HEIGHT;
-  int SPRITES_WIDTH;
-  int SPRITES_HEIGHT;
-  int TILE_WIDTH;
-  int TILE_HEIGHT;
+  int TOTAL_TILES;    //total number of tiles in the map
+  int MAP_WIDTH;      //width of the map in pixels
+  int MAP_HEIGHT;     //height of the map in pixels
+  int SPRITES_WIDTH;  //width of the sprite sheet in pixels
+  int SPRITES_HEIGHT; //height of the sprite sheet in pixels
+  int TILE_WIDTH;     //width of the sprites in pixels
+  int TILE_HEIGHT;    //height of the sprites in pixels
+
+  //TODO: add values for width/height of the map and spritesheet, so I don't have to calculate that everytime
 };
 
 #endif

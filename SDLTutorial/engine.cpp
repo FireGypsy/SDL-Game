@@ -97,6 +97,10 @@ void Engine::play() {
         if ( keystate[SDL_SCANCODE_T] ) {
           switchSprite();
         }
+        //use this to debug the getTileByCoord/ByIndex functions and see what tile the cursor is currently selecting in console
+        if (keystate[SDL_SCANCODE_G]) {
+          std::cout << "Current tile by coord(" << cursor->getX() << "," << cursor->getY() << "): " << GameMap::getInstance().getTileByCoord(cursor->getX(), cursor->getY())->getType() << std::endl;
+        }
         if (keystate[SDL_SCANCODE_F4] && !makeVideo) {
           std::cout << "Initiating frame capture" << std::endl;
           makeVideo = true;
