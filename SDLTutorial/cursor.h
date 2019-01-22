@@ -32,6 +32,9 @@ public:
 private:
   const Image * image;
 
+  //TODO: I need to change drawable to work with rects, since this is simpler to interface with the gameMap (will need overhaul of drawable.h)
+  SDL_Rect tempRect;
+
 protected:
   int worldWidth;
   int worldHeight;

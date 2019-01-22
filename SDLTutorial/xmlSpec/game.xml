@@ -44,7 +44,7 @@
 
 <Cursor>
   <file>assets/yellowstar32.png</file>
-  <startLoc x="227" y="240"/>
+  <startLoc x="0" y="0"/>
   <speedX>0</speedX>
   <speedY>0</speedY>
   <transparency>false</transparency>

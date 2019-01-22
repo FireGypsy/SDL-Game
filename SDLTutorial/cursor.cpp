@@ -69,17 +69,17 @@ void Cursor::update(Uint32 ticks) {
   //  std::cout << "can't enter this" << std::endl;
 
   if (getY() < 0) {
-    setVelocityY(std::abs(getVelocityY()));
+    setPosition(getPosition() - incr);
   }
   if (getY() > worldHeight - getScaledHeight()) {
-    setVelocityY(-std::abs(getVelocityY()));
+    setPosition(getPosition() - incr);
   }
 
   if (getX() < 0) {
-    setVelocityX(std::abs(getVelocityX()));
+    setPosition(getPosition() - incr);
   }
   if (getX() > worldWidth - getScaledWidth()) {
-    setVelocityX(-std::abs(getVelocityX()));
+    setPosition(getPosition() - incr);
   }
 }
 

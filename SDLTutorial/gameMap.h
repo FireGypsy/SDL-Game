@@ -19,7 +19,10 @@ public:
   //returns the tile at int x, int y
   Tile* getTileByIndex(int x, int y);
   Tile* getTileByCoord(int x, int y);
-  bool canEnter(int, int);
+
+  //TODO: need to make this contract clearer - checking if the sprite can validly enter a tile
+  bool canEnter(SDL_Rect);
+  bool checkCollision(SDL_Rect, SDL_Rect);
 
 private:
   GameMap();
@@ -32,6 +35,8 @@ private:
 
   float viewX;
   float viewY;
+
+  SDL_Rect tempRect;
 
   int TOTAL_TILES;    //total number of tiles in the map
   int MAP_WIDTH;      //width of the map in pixels

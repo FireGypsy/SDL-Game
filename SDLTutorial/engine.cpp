@@ -36,6 +36,7 @@ Engine::Engine() :
   std::cout << "Loading complete" << std::endl;
 }
 
+//draw from the bottom up (later draws go over earlier draws)
 void Engine::draw() const {
   //clear the renderer
   SDL_SetRenderDrawColor(renderer, 0x0, 0x0, 0x0, 0xFF);
